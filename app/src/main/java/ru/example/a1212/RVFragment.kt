@@ -15,13 +15,14 @@ import ru.example.a1212.placeholder.PlaceholderContent
  */
 class RVFragment : Fragment() {
 
-    private var columnCount = 1
-
+    private var content = ""
+    private var contantArray = mutableListOf<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
-            columnCount = it.getInt(ARG_COLUMN_COUNT)
+            content = it.getString(ARG_CONTENT).toString()
+            contantArray= content.split(",") as MutableList<String>
         }
     }
 
@@ -34,11 +35,9 @@ class RVFragment : Fragment() {
         // Set the adapter
         if (view is RecyclerView) {
             with(view) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
-                adapter = MyItemRecyclerViewAdapter(PlaceholderContent.ITEMS)
+                layoutManager = LinearLayoutManager(context)
+
+                adapter = MyItemRecyclerViewAdapter(contantArray)
             }
         }
         return view
@@ -47,14 +46,14 @@ class RVFragment : Fragment() {
     companion object {
 
         // TODO: Customize parameter argument names
-        const val ARG_COLUMN_COUNT = "column-count"
+        const val ARG_CONTENT = "content"
 
         // TODO: Customize parameter initialization
         @JvmStatic
-        fun newInstance(columnCount: Int) =
+        fun newInstance(content: String) =
             RVFragment().apply {
                 arguments = Bundle().apply {
-                    putInt(ARG_COLUMN_COUNT, columnCount)
+                    putString(ARG_CONTENT, content)
                 }
             }
     }

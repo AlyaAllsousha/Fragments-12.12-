@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
+import androidx.databinding.DataBindingUtil
+import ru.example.a1212.databinding.FragmentCreateListBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,8 +36,18 @@ class CreateListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val binding:FragmentCreateListBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_create_list, container, false)
+        binding.EdText.addTextChangedListener {
+            val content = it.toString()
+            (activity as MainActivity).changeList(content)
+        }
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create_list, container, false)
+        return binding.root
+    }
+    interface IChangeRvList{
+        fun changeList(string: String){
+
+        }
     }
 
     companion object {
@@ -57,3 +70,6 @@ class CreateListFragment : Fragment() {
             }
     }
 }
+
+
+

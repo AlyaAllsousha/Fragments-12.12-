@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import ru.example.a1212.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), CreateListFragment.IChangeRvList {
     var state:Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,5 +33,11 @@ class MainActivity : AppCompatActivity() {
             }
             state = (state +1) % 3
         }
+    }
+    override fun changeList(string: String){
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.FrameRv, RVFragment.newInstance(string))
+            .commit()
     }
 }
