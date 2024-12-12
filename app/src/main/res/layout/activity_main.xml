@@ -1,33 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
-            name="viewModel"
+            name="binding"
             type="ru.example.a1212.MainActivity" />
     </data>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
 
-    <fragment
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/fragment1"
-        android:layout_weight="1"
-        lay
-        android:name="ru.example.a1212.BlankFragment"
-        />
-    <fragment
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/fragment2"
-        android:layout_weight="1"
-        android:name="ru.example.a1212.BlankFragment2"
-        />
+        android:gravity="center"
+        android:orientation="vertical">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/btn"
+            android:layout_weight="1"
+            android:textSize="25sp"
+            android:text="Change Fragment"/>
+        <fragment
+            android:id="@+id/fragment1"
+            android:name="ru.example.a1212.BlankFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
+        <fragment
+            android:id="@+id/fragment2"
+            android:name="ru.example.a1212.BlankFragment2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/FrameLayout"/>
 
-</LinearLayout>
+    </LinearLayout>
 </layout>
