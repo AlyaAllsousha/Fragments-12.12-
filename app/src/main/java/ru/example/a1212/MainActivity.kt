@@ -11,17 +11,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding:ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         setContentView(binding.root)
+        val fragment = BlankFragment()
+        supportFragmentManager.beginTransaction().add(R.id.FrameLayout, fragment).commit()
         binding.btn.setOnClickListener {
             when(state){
-                0 -> {
+                2 -> {
                     val fragment = BlankFragment()
                     supportFragmentManager.beginTransaction().replace(R.id.FrameLayout, fragment).commit()
                 }
                 1  ->{
-                    val fragment2 = BlankFragment2()
+                    val fragment2 = BlankFragment2.newInstance("Math", 5)
                     supportFragmentManager.beginTransaction().replace(R.id.FrameLayout, fragment2).commit()
                 }
-                2 ->{
+                0 ->{
                     val fragment3 = SettingsFragment()
                     supportFragmentManager.beginTransaction().replace(R.id.FrameLayout, fragment3).commit()
                 }

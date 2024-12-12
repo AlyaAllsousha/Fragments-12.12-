@@ -20,7 +20,7 @@
             android:text="Change Fragment"/>
         <fragment
             android:id="@+id/fragment1"
-            android:name="ru.example.a1212.BlankFragment"
+            android:name="ru.example.a1212.CreateListFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1" />
@@ -31,6 +31,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/FrameRv"/>
 
         <FrameLayout
             android:layout_width="match_parent"
